@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ImageGallery</title>
+</head>
+<body>
+{% if image_list %}
+    <ul>
+    {% for image in image_list %}
+         <li><a href="{% url 'PhotoGallery:PhotoGalleryDetail' image.id %}">{{ image.image_title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Images are available.</p>
+{% endif %}
+</body>
+</html>

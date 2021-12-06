@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ImageDetails</title>
+</head>
+<body>
+<form action="{% url 'PhotoGallery:PhotoGalleryVote' image.id%}" method="post">
+    {% csrf_token  %}
+    <fieldset>
+        <legend><h1>{{ image.image_title }}</h1></legend>
+        {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+    <ul>
+        <li>Image File:   {{ image.image_file }}</li>
+        <li>Image Author:   {{ image.image_author }}</li>
+        <li>Image Publishing Date:  {{ image.image_pub_date }}</li>
+    </ul>
+    <input type="radio" name="choice" id="option1" value="like">
+    <label for="option1">Like</label>
+    <input type="radio" name="choice" id="option2" value="dislike">
+    <label for="option2">Dislike</label>
+    </fieldset>
+<input type="submit" value="Vote">
+</form>
+</body>
+</html>
